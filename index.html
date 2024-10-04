@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foosball Tournament Rankings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+            z-index: 1; /* Ensure the container is above the watermark */
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: 700;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Logo styles */
+        .logo {
+            position: absolute;
+            top: 20px;
+            width: 170px; /* Increased size of the logos */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .logo-left {
+            left: 20px; /* Position for the first logo */
+        }
+
+        .logo-right {
+            right: 60px; /* Adjusted position for the second logo */
+        }
+
+        /* Animation keyframes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo positioned at the top left -->
+    <img src="fooswar logo.png" alt="Fooswar Logo" class="logo logo-left">
+    <!-- Logo positioned at the top right -->
+    <img src="BCP logo.png" alt="BCP Logo" class="logo logo-right">
+
+    <div class="container">
+        <h2>Foosball Tournament Rankings</h2>
+        <div id="rankingTable"></div>
+    </div>
+    <div class="footer">Powered by Ahmed Ghazanfar</div>
+    
+    <script>
+        // Hardcode the data in JavaScript
+        const teamsData = [
+            { teamName: "Team A", points: 100 },
+            { teamName: "Team B", points: 80 },
+            { teamName: "Team C", points: 150 },
+            { teamName: "Team D", points: 50 },
+            { teamName: "Team E", points: 210 }
+        ];
+
+        // Function to display rankings
+        function displayRankings(data) {
+            let table = `<table><tr><th>Rank</th><th>Team Name</th><th>Points</th></tr>`;
+
+            // Sort teams by points in descending order
+            data.sort((a, b) => b.points - a.points);
+
+            // Iterate through the sorted data and create table rows
+            data.forEach((team, index) => {
+                table += `<tr><td>${index + 1}</td><td>${team.teamName}</td><td>${team.points}</td></tr>`;
+            });
+
+            table += `</table>`;
+            document.getElementById('rankingTable').innerHTML = table;
+        }
+
+        // Call the display function to render the table
+        displayRankings(teamsData);
+    </script>
+</body>
+</html>

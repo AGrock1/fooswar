@@ -83,6 +83,45 @@
             right: 60px; /* Adjusted position for the second logo */
         }
 
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .logo {
+                width: 120px; /* Smaller logo size for tablets and mobiles */
+                top: 10px; /* Adjusted position */
+            }
+
+            .logo-right {
+                right: 30px; /* Adjusted right position */
+            }
+
+            h2 {
+                font-size: 1.5em; /* Adjust heading size for smaller screens */
+            }
+
+            th, td {
+                padding: 10px; /* Reduced padding for table cells */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                width: 100px; /* Further smaller logo size for mobile phones */
+                top: 5px; /* Further adjusted position */
+            }
+
+            .logo-right {
+                right: 10px; /* Further adjusted right position */
+            }
+
+            h2 {
+                font-size: 1.2em; /* Adjust heading size for mobile screens */
+            }
+
+            th, td {
+                padding: 8px; /* Further reduced padding for table cells */
+            }
+        }
+
         /* Animation keyframes */
         @keyframes fadeIn {
             from {
@@ -115,7 +154,7 @@
         <h2>Foosball Tournament Rankings</h2>
         <div id="rankingTable"></div>
     </div>
-    <div class="footer">Powered by Ahmed Ghazanfar</div>
+    <div class="footer">Powered by YourName</div>
     
     <script>
         // Hardcode the data in JavaScript

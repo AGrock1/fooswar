@@ -12,7 +12,6 @@
             margin: 0;
             padding: 20px;
             position: relative;
-            overflow: hidden;
         }
 
         .navigation {
@@ -27,13 +26,13 @@
             padding: 10px 15px;
             margin: 0 10px;
             border-radius: 5px;
+            display: inline-block; /* Ensure links are visible as inline-blocks */
         }
 
         h2 {
             text-align: center;
             color: #333;
             margin-bottom: 30px;
-            animation: fadeIn 1s ease-in-out;
         }
 
         .container {
@@ -43,132 +42,11 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            position: relative;
-            z-index: 1; /* Ensure the container is above the watermark */
-            margin-top: 120px; /* Increased margin to create more space below logos */
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin: 20px 0;
-            animation: slideIn 1s ease-in-out;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-            font-weight: 700;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            color: #666;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        /* Logo styles */
-        .logo {
-            position: absolute;
-            top: 20px;
-            width: 170px; /* Fooswar logo size */
-            height: auto; /* Maintain aspect ratio */
-        }
-
-        .logo-left {
-            left: 20px; /* Position for the first logo */
-        }
-
-        .logo-right {
-            right: 60px; /* Adjusted position for the second logo */
-            width: 190px; /* Increased size for BCP logo */
-        }
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .logo {
-                width: 120px; /* Smaller size for the Fooswar logo */
-                top: 10px; /* Adjusted position */
-            }
-
-            .logo-right {
-                right: 40px; /* Adjusted right position for the BCP logo */
-                width: 140px; /* Increased size for BCP logo on tablets */
-            }
-
-            h2 {
-                font-size: 1.5em; /* Adjust heading size for smaller screens */
-            }
-
-            th, td {
-                padding: 10px; /* Reduced padding for table cells */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                width: 130px; /* Fooswar logo size for mobile phones */
-                top: 5px; /* Further adjusted position */
-            }
-
-            .logo-right {
-                right: 20px; /* Further adjusted right position for the BCP logo */
-                width: 160px; /* Increased size for BCP logo on mobile */
-            }
-
-            h2 {
-                font-size: 1.2em; /* Adjust heading size for mobile screens */
-            }
-
-            th, td {
-                padding: 8px; /* Further reduced padding for table cells */
-            }
-        }
-
-        /* Animation keyframes */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Logo positioned at the top left -->
-    <img src="fooswar logo.png" alt="Fooswar Logo" class="logo logo-left">
-    <!-- Logo positioned at the top right -->
-    <img src="BCP logo.png" alt="BCP Logo" class="logo logo-right">
-
-    <!-- Navigation links to other pages -->
+    <!-- Navigation Links -->
     <div class="navigation">
         <a href="page1.html">Home</a>
         <a href="page2.html">Rules</a>
@@ -179,10 +57,9 @@
         <h2>Foosball Tournament Rankings</h2>
         <div id="rankingTable"></div>
     </div>
-    <div class="footer">Powered by Ahmed Ghazanfar</div>
     
     <script>
-        // Hardcode the data in JavaScript
+        // Hardcoded data
         const teamsData = [
             { teamName: "Team A", points: 100 },
             { teamName: "Team B", points: 80 },
@@ -193,12 +70,12 @@
 
         // Function to display rankings
         function displayRankings(data) {
-            let table = `<table><tr><th>Rank</th><th>Team Name</th><th>Points</th></tr>`;
+            let table = `<table border="1"><tr><th>Rank</th><th>Team Name</th><th>Points</th></tr>`;
 
             // Sort teams by points in descending order
             data.sort((a, b) => b.points - a.points);
 
-            // Iterate through the sorted data and create table rows
+            // Create table rows
             data.forEach((team, index) => {
                 table += `<tr><td>${index + 1}</td><td>${team.teamName}</td><td>${team.points}</td></tr>`;
             });
@@ -207,7 +84,7 @@
             document.getElementById('rankingTable').innerHTML = table;
         }
 
-        // Call the display function to render the table
+        // Display the rankings
         displayRankings(teamsData);
     </script>
 </body>
